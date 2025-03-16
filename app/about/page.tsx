@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function About() {
   return (
     <main className="flex flex-col w-full">
@@ -56,11 +54,8 @@ export default function About() {
             rel="noopener noreferrer"
             className="block my-12 hover:opacity-50"
           >
-            <Image
+            <img
               className="w-full h-auto shadow-lg"
-              width={0}
-              height={0}
-              sizes="100vw"
               src="/docs/request.png"
               alt="Initial request letter"
             />
@@ -74,11 +69,8 @@ export default function About() {
             rel="noopener noreferrer"
             className="block my-12 hover:opacity-50"
           >
-            <Image
+            <img
               className="w-full h-auto shadow-lg"
-              width={0}
-              height={0}
-              sizes="100vw"
               src="/docs/billing.png"
               alt="Billing letter"
             />
@@ -95,11 +87,8 @@ export default function About() {
             rel="noopener noreferrer"
             className="block my-12 hover:opacity-50"
           >
-            <Image
+            <img
               className="w-full h-auto shadow-lg"
-              width={0}
-              height={0}
-              sizes="100vw"
               src="/docs/fundraising.png"
               alt="Fundraising reddit post"
             />
@@ -111,11 +100,8 @@ export default function About() {
             rel="noopener noreferrer"
             className="block my-12 hover:opacity-50"
           >
-            <Image
+            <img
               className="w-full h-auto shadow-lg"
-              width={0}
-              height={0}
-              sizes="100vw"
               src="/docs/availability.png"
               alt="Letter of estimated availability"
             />
@@ -130,11 +116,8 @@ export default function About() {
             rel="noopener noreferrer"
             className="block my-12 hover:opacity-50"
           >
-            <Image
+            <img
               className="w-full h-auto shadow-lg"
-              width={0}
-              height={0}
-              sizes="100vw"
               src="/docs/response.png"
               alt="Response letter"
             />
@@ -189,11 +172,8 @@ export default function About() {
             rel="noopener noreferrer"
             className="block my-12 hover:opacity-50"
           >
-            <Image
+            <img
               className="w-full h-auto shadow-lg"
-              width={0}
-              height={0}
-              sizes="100vw"
               src="/docs/sheets.png"
               alt="Responsive documents"
             />
