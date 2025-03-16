@@ -147,12 +147,15 @@ const Distribution = ({ subjectArea, catalogNumber }: DistributionProps) => {
                     setSelectedInstructorName(newSelectedInstructorName);
                     setSelectedTerm("");
 
-                    const url = new URL(window.location.href);
-                    url.searchParams.set(
-                      "instructor",
-                      newSelectedInstructorName,
-                    );
-                    history.replaceState({}, "", url);
+                    // Safe window access for static export
+                    if (typeof window !== 'undefined') {
+                      const url = new URL(window.location.href);
+                      url.searchParams.set(
+                        "instructor",
+                        newSelectedInstructorName,
+                      );
+                      history.replaceState({}, "", url);
+                    }
                   }
                 }}
                 options={instructorNames}

@@ -19,6 +19,9 @@ type CatalogNumbersBySubjectArea = {
   };
 };
 
+// Static export support
+export const dynamic = "force-static";
+
 /**
  * TODO(nathanhleung): cache this route (and others that can be cached)
  */

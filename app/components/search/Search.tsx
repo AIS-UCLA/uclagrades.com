@@ -111,9 +111,11 @@ const Search = ({ onlyInput = false }: SearchProps) => {
                 instructorQueryInputRef.current?.select();
 
                 if (pathname === "/") {
-                  const url = new URL(window.location.href);
-                  url.searchParams.delete("instructor");
-                  history.pushState({}, "", url);
+                  if (typeof window !== 'undefined') {
+                    const url = new URL(window.location.href);
+                    url.searchParams.delete("instructor");
+                    history.pushState({}, "", url);
+                  }
                 }
               }
             }}
@@ -142,9 +144,11 @@ const Search = ({ onlyInput = false }: SearchProps) => {
                 subjectAreaQueryInputRef.current?.select();
 
                 if (pathname === "/") {
-                  const url = new URL(window.location.href);
-                  url.searchParams.delete("subjectArea");
-                  history.pushState({}, "", url);
+                  if (typeof window !== 'undefined') {
+                    const url = new URL(window.location.href);
+                    url.searchParams.delete("subjectArea");
+                    history.pushState({}, "", url);
+                  }
                 }
               }
             }}
@@ -172,9 +176,11 @@ const Search = ({ onlyInput = false }: SearchProps) => {
                 subjectAreaQueryInputRef.current?.focus();
 
                 if (pathname === "/") {
-                  const url = new URL(window.location.href);
-                  url.searchParams.delete("subjectArea");
-                  history.pushState({}, "", url);
+                  if (typeof window !== 'undefined') {
+                    const url = new URL(window.location.href);
+                    url.searchParams.delete("subjectArea");
+                    history.pushState({}, "", url);
+                  }
                 }
               }
             }}
@@ -192,9 +198,11 @@ const Search = ({ onlyInput = false }: SearchProps) => {
                 setSelectedInstructor(instructor);
 
                 if (pathname === "/") {
-                  const url = new URL(window.location.href);
-                  url.searchParams.set("instructor", instructor);
-                  history.pushState({}, "", url);
+                  if (typeof window !== 'undefined') {
+                    const url = new URL(window.location.href);
+                    url.searchParams.set("instructor", instructor);
+                    history.pushState({}, "", url);
+                  }
                 }
               }}
             />
@@ -222,9 +230,11 @@ const Search = ({ onlyInput = false }: SearchProps) => {
                 setSelectedSubjectArea(subjectArea);
 
                 if (pathname === "/") {
-                  const url = new URL(window.location.href);
-                  url.searchParams.set("subjectArea", subjectArea);
-                  history.pushState({}, "", url);
+                  if (typeof window !== 'undefined') {
+                    const url = new URL(window.location.href);
+                    url.searchParams.set("subjectArea", subjectArea);
+                    history.pushState({}, "", url);
+                  }
                 }
 
                 // Wait until next tick to ensure component is mounted
@@ -254,10 +264,12 @@ const Search = ({ onlyInput = false }: SearchProps) => {
           className="text-xs underline hover:opacity-50 cursor-pointer select-none text-white"
           onClick={() => {
             if (pathname === "/") {
-              const url = new URL(window.location.href);
-              url.searchParams.delete("subjectArea");
-              url.searchParams.delete("instructor");
-              history.pushState({}, "", url);
+              if (typeof window !== 'undefined') {
+                const url = new URL(window.location.href);
+                url.searchParams.delete("subjectArea");
+                url.searchParams.delete("instructor");
+                history.pushState({}, "", url);
+              }
             }
 
             if (isSearchingByInstructor) {

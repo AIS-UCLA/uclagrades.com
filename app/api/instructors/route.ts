@@ -18,9 +18,13 @@ type CoursesByInstructor = {
   };
 };
 
+// Static export support
+export const dynamic = "force-static";
+
 export async function GET() {
   const coursesByInstructor: CoursesByInstructor = {};
   const instructors = Object.keys(instructorIndex);
+
   for (const instructor of instructors) {
     if (!coursesByInstructor[instructor]) {
       coursesByInstructor[instructor] = {};
@@ -31,6 +35,7 @@ export async function GET() {
       if (!coursesByInstructor[instructor][subjectArea]) {
         coursesByInstructor[instructor][subjectArea] = {};
       }
+
       if (!coursesByInstructor[instructor][subjectArea][course.catalogNumber]) {
         coursesByInstructor[instructor][subjectArea][course.catalogNumber] = {
           subjectArea,
@@ -43,7 +48,6 @@ export async function GET() {
           course.catalogNumber
         ].nRows += 1;
       }
-      coursesByInstructor[instructor][subjectArea];
     }
   }
 

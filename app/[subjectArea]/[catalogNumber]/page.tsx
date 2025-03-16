@@ -2,6 +2,33 @@ import { CourseTitle } from "@/app/components/CourseTitle";
 import { Distribution } from "@/app/components/Distribution";
 import { ShareCourseButton } from "@/app/components/ShareCourseButton";
 import { Metadata } from "next";
+import untypedSubjectIndex from "@/app/generated/subject-index.json";
+
+// Define type for subject index
+type SubjectIndex = {
+  [subjectArea: string]: {
+    [catalogNumber: string]: any[];
+  };
+};
+
+const subjectIndex = untypedSubjectIndex as SubjectIndex;
+
+// Generate all possible static paths for courses
+export async function generateStaticParams() {
+  const params = [];
+  
+  // Loop through all subject areas and catalog numbers in the data
+  for (const subjectArea of Object.keys(subjectIndex)) {
+    for (const catalogNumber of Object.keys(subjectIndex[subjectArea])) {
+      params.push({
+        subjectArea,
+        catalogNumber,
+      });
+    }
+  }
+  
+  return params;
+}
 
 type Props = {
   params: { subjectArea: string; catalogNumber: string };

@@ -12,9 +12,12 @@ const GoogleAnalytics = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    (window as any).gtag("config", process.env.NEXT_PUBLIC_GA_TRACKING_ID, {
-      page_path: window.location.href,
-    });
+    // Only execute in browser environment
+    if (typeof window !== 'undefined') {
+      (window as any).gtag("config", process.env.NEXT_PUBLIC_GA_TRACKING_ID, {
+        page_path: window.location.href,
+      });
+    }
   }, [pathname]);
 
   return (
@@ -24,11 +27,12 @@ const GoogleAnalytics = () => {
       />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}');
+          if (typeof window !== 'undefined') {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}');
+          }
         `}
       </Script>
     </>
